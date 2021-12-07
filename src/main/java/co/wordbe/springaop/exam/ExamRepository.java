@@ -1,5 +1,6 @@
 package co.wordbe.springaop.exam;
 
+import co.wordbe.springaop.exam.annotation.Retry;
 import co.wordbe.springaop.exam.annotation.Trace;
 import org.springframework.stereotype.Repository;
 
@@ -11,6 +12,7 @@ public class ExamRepository {
      * 5번에 1번 실패하는 요청
      */
     @Trace
+    @Retry(value = 4)
     public String save(String itemID) {
         seq++;
         if (seq % 5 == 0)
